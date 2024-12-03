@@ -61,11 +61,11 @@ async def proxy_chat_completions(request: Request):
 
     if original_model == "gemma-7b-it":
         request_body["model"] = "claude-3.5-sonnet"
-    else if original_model == "llama3-70b-8192":
+    elif original_model == "llama3-70b-8192":
         request_body["model"] = "o1-preview"
-    else if original_model == "llama3-8b-8192":
+    elif original_model == "llama3-8b-8192":
         request_body["model"] = "gpt-4o"
-    else if original_model == "mixtral-8x7b-32768":
+    elif original_model == "mixtral-8x7b-32768":
         request_body["model"] = "o1-mini"
     print(f"original {original_model} to {request_body['model']}")
 
