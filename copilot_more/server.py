@@ -56,7 +56,7 @@ async def proxy_chat_completions(request: Request):
     """
     request_body = await request.json()
     request_body["model"] = "claude-3.5-sonnet"
-    print(request_body["messages'])
+    print(request_body["messages"])
 
     logger.info(f"Received request: {json.dumps(request_body, indent=2)}")
 
