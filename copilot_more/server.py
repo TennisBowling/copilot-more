@@ -57,9 +57,17 @@ async def proxy_chat_completions(request: Request):
 
     
     request_body = await request.json()
-    print(f"original request model was {request_body['model']}")
-    request_body["model"] = "claude-3.5-sonnet"
-    
+    original_model = request_body['model']
+
+    if original_model == "gemma-7b-it":
+        request_body["model"] = "claude-3.5-sonnet"
+    else if original_model == "llama3-70b-8192":
+        request_body["model"] = "o1-preview"
+    else if original_model == "llama3-8b-8192":
+        request_body["model"] = "gpt-4o"
+    else if original_model == "mixtral-8x7b-32768":
+        request_body["model"] = "o1-mini"
+    print(f"original {original_model} to {request_body['model']}")
 
     logger.info(f"Received request: {json.dumps(request_body, indent=2)}")
 
