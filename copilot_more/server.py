@@ -55,6 +55,8 @@ async def proxy_chat_completions(request: Request):
     Proxies chat completion requests with SSE support.
     """
     request_body = await request.json()
+    request_body["model"] = "claude-3.5-sonnet"
+    print(request_body["messages'])
 
     logger.info(f"Received request: {json.dumps(request_body, indent=2)}")
 
